@@ -15,52 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CalendarEvent } from "./calendar-event";
-
-// Sample events data
-const events = [
-  {
-    id: 1,
-    title: "Team Meeting",
-    date: new Date(2025, 3, 23, 10, 0),
-    endDate: new Date(2025, 3, 23, 11, 30),
-    type: "work",
-  },
-  {
-    id: 2,
-    title: "Doctor Appointment",
-    date: new Date(2025, 3, 25, 14, 0),
-    endDate: new Date(2025, 3, 25, 15, 0),
-    type: "personal",
-  },
-  {
-    id: 3,
-    title: "Birthday Party",
-    date: new Date(2025, 3, 28, 18, 0),
-    endDate: new Date(2025, 3, 28, 21, 0),
-    type: "social",
-  },
-  {
-    id: 4,
-    title: "Project Deadline",
-    date: new Date(2025, 3, 30, 17, 0),
-    endDate: new Date(2025, 3, 30, 17, 0),
-    type: "work",
-  },
-  {
-    id: 5,
-    title: "Conference Call",
-    date: new Date(2025, 4, 2, 9, 0),
-    endDate: new Date(2025, 4, 2, 10, 0),
-    type: "work",
-  },
-  {
-    id: 6,
-    title: "Gym Session",
-    date: new Date(2025, 4, 5, 18, 0),
-    endDate: new Date(2025, 4, 5, 19, 30),
-    type: "personal",
-  },
-];
+import { events } from "./events";
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
