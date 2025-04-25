@@ -1,6 +1,8 @@
 import { format } from "date-fns";
-import { Card } from "@/components/ui/card";
-import { ArrowRightIcon } from "lucide-react";
+import { ActivityCard } from "@/components/ActivityCard";
+import WeekdayHeader from "@/components/WeekdayHeader";
+import CalendarDayCard from "@/components/CalendarDayCard";
+
 const activities = [
   {
     date: new Date("8-29-2025"),
@@ -135,54 +137,17 @@ export default function CalendarPage() {
     <div className="min-h-screen bg-background">
       <main className="container mx-auto py-6 px-4">
         <div className="grid grid-cols-7 gap-4">
-          <Card className="border border-gray p-1">Sunday</Card>
-          <Card className="border border-gray p-1">Monday</Card>
-          <Card className="border border-gray p-1">Tuesday</Card>
-          <Card className="border border-gray p-1">Wednesday</Card>
-          <Card className="border border-gray p-1">Thursday</Card>
-          <Card className="border border-gray p-1">Friday</Card>
-          <Card className="border border-gray p-1">Saturday</Card>
-
-          <Card className="border border-black p-1">
-            {format(new Date("8-24-2025"), "d")}
-          </Card>
-          <Card className="border border-black p-1">
-            {format(new Date("8-25-2025"), "d")}
-          </Card>
-          <Card className="border border-black p-1">
-            {format(new Date("8-26-2025"), "d")}
-          </Card>
-          <Card className="border border-black p-1">
-            {format(new Date("8-27-2025"), "d")}
-          </Card>
-          <Card className="border border-black p-1">
-            {format(new Date("8-28-2025"), "d")}
-          </Card>
-
+          <WeekdayHeader />
+          <CalendarDayCard date={new Date("8-24-2025")} />
+          <CalendarDayCard date={new Date("8-25-2025")} />
+          <CalendarDayCard date={new Date("8-26-2025")} />
+          <CalendarDayCard date={new Date("8-27-2025")} />
+          <CalendarDayCard date={new Date("8-28-2025")} />
           {activities.map((activity) => (
-            <Card
+            <ActivityCard
               key={format(activity.date, "yyyy-MM-dd")}
-              className="border border-black p-2"
-            >
-              <div className="text-2xl font-bold">
-                {format(activity.date, "M/dd")}
-              </div>
-              <div className="flex flex-row items-center">
-                {activity.location.map((location, index) => {
-                  return (
-                    <span key={location} className="flex flex-row items-center">
-                      <span className="inline">{location}</span>
-                      {index < activity.location.length - 1 && (
-                        <span>
-                          <ArrowRightIcon className="w-3 h-3 inline" />
-                        </span>
-                      )}
-                    </span>
-                  );
-                })}
-              </div>
-              <p>{activity.activities}</p>
-            </Card>
+              activity={activity}
+            />
           ))}
         </div>
       </main>
