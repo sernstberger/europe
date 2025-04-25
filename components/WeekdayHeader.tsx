@@ -14,9 +14,9 @@ export default function WeekdayHeader() {
   return (
     <>
       {days.map((day) => (
-        <Card key={day} className="border border-gray p-1">
+        <div key={day} className="flex items-center justify-center text-sm">
           {day}
-        </Card>
+        </div>
       ))}
     </>
   );

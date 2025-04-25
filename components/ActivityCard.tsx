@@ -1,20 +1,33 @@
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, HotelIcon, MapPinIcon } from "lucide-react";
 import React from "react";
 interface Activity {
   date: Date;
   location: string[];
-  activities?: string;
+  activities?: string[];
   travelPlan?: string;
 }
 
-export function ActivityCard({ activity }: { activity: Activity }) {
+export function ActivityCard({
+  activity,
+  index,
+}: {
+  activity: Activity;
+  index: number;
+}) {
+  // every 7th card, add a border-r
+  const isLastCard = (index: number) => index % 7 === 6;
   return (
-    <Card className="border border-black p-2">
+    <div
+      className={`border-l border-t ${
+        isLastCard(index) ? "border-r" : ""
+      } border-black p-2`}
+    >
       <div className="text-2xl font-bold">{format(activity.date, "M/dd")}</div>
       <div className="flex flex-row items-center">
+        <MapPinIcon className="w-4 h-4 inline" />
         {activity.location.map((location, index) => (
           <span key={location} className="flex flex-row items-center">
             <span className="inline">{location}</span>
@@ -26,7 +39,15 @@ export function ActivityCard({ activity }: { activity: Activity }) {
           </span>
         ))}
       </div>
-      {activity.activities && <p>{activity.activities}</p>}
+      {activity.activities && (
+        <>
+          {activity.activities.map((_activity) => (
+            <Card key={_activity} className="border border-gray-300 p-1">
+              <p className="text-sm">{_activity}</p>
+            </Card>
+          ))}
+        </>
+      )}
       {activity.travelPlan ? (
         <p>{activity.travelPlan}</p>
       ) : (
@@ -44,9 +65,10 @@ export function ActivityCard({ activity }: { activity: Activity }) {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <HotelIcon className="w-4 h-4 inline" />
           Find Hotel
         </a>
       )}
-    </Card>
+    </div>
   );
 }

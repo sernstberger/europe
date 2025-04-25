@@ -3,5 +3,9 @@ import { format } from "date-fns";
 import React from "react";
 
 export default function CalendarDayCard({ date }: { date: Date }) {
-  return <Card className="border border-black p-1">{format(date, "d")}</Card>;
+  return (
+    <div className="border-l border-t border-gray-300 p-1 flex">
+      {format(date, "d")}
+    </div>
+  );
 }
