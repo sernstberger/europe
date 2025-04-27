@@ -8,11 +8,21 @@ const activities = [
     date: new Date("8-29-2025"),
     location: ["Indianapolis", "Amsterdam"],
     activities: ["Flight to Amsterdam"],
+    flightUrl:
+      "https://www.google.com/flights?hl=en#flt=IND.AMS.2025-08-29*PAR.IND.2025-09-27",
   },
   {
     date: new Date("8-30-2025"),
     location: ["Amsterdam"],
-    activities: ["Canal cruise", "Rijksmuseum", "Explore Jordaan neighborhood"],
+    activities: [
+      "Canal cruise",
+      "Rijksmuseum",
+      "Explore Jordaan neighborhood",
+      "Vondelpark",
+      "Rijksmuseum",
+    ],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Amsterdam%2C%20Netherlands&startDate=2025-08-30&endDate=2025-09-03&adults=2&rooms=1",
   },
   {
     date: new Date("8-31-2025"),
@@ -22,49 +32,46 @@ const activities = [
   {
     date: new Date("9-1-2025"),
     location: ["Amsterdam"],
-    activities: [
-      "Day trip to Zaanse Schans windmills",
-      "Visit Volendam fishing village",
-    ],
+    activities: ["Day trip to Zaanse Schans windmills"],
   },
   {
     date: new Date("9-2-2025"),
     location: ["Amsterdam"],
-    activities: [
-      "Vondelpark",
-      "Albert Cuyp Market",
-      "NDSM Wharf artsy district",
-    ],
+    activities: ["The Hague: Peace Palace; Ridderzaal;"],
   },
   {
     date: new Date("9-3-2025"),
     location: ["Amsterdam", "London"],
     activities: ["Morning train Amsterdam to London", "Work 2-10pm"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=London%2C%20United%20Kingdom&startDate=2025-09-03&endDate=2025-09-08&adults=2&rooms=1",
   },
   {
     date: new Date("9-4-2025"),
     location: ["London"],
-    activities: ["Work 2-10pm"],
+    activities: ["Morning: Tower of London (opens 9am)", "Work 2-10pm"],
   },
   {
     date: new Date("9-5-2025"),
     location: ["London"],
-    activities: ["Work 2-10pm"],
+    activities: ["Morning: British Museum (opens 10am)", "Work 2-10pm"],
   },
   {
     date: new Date("9-6-2025"),
     location: ["London"],
-    activities: ["Tower of London", "British Museum", "Hyde Park walk"],
+    activities: ["Westminster Abbey", "Buckingham Palace", "London Eye"],
   },
   {
     date: new Date("9-7-2025"),
     location: ["London"],
-    activities: ["Westminster Abbey", "Buckingham Palace", "London Eye"],
+    activities: ["Full-day tour: Windsor Castle, Stonehenge & Bath"],
   },
   {
     date: new Date("9-8-2025"),
     location: ["London", "Rome"],
     activities: ["Flight to Rome"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Rome%2C%20Italy&startDate=2025-09-08&endDate=2025-09-12&adults=2&rooms=1",
   },
   {
     date: new Date("9-9-2025"),
@@ -89,7 +96,15 @@ const activities = [
   {
     date: new Date("9-12-2025"),
     location: ["Rome", "Florence"],
-    activities: ["Train to Florence", "Statue of David"],
+    activities: [
+      "Train to Florence",
+      "Statue of David",
+      "Uffizi Gallery",
+      "Ponte Vecchio",
+      "Boboli Gardens",
+    ],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Florence%2C%20Italy&startDate=2025-09-12&endDate=2025-09-15&adults=2&rooms=1",
   },
   {
     date: new Date("9-13-2025"),
@@ -99,12 +114,14 @@ const activities = [
   {
     date: new Date("9-14-2025"),
     location: ["Florence"],
-    activities: ["Uffizi Gallery", "Ponte Vecchio", "Boboli Gardens"],
+    activities: ["Tuscany wine tour"],
   },
   {
     date: new Date("9-15-2025"),
     location: ["Florence", "Venice"],
     activities: ["Train to Venice"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Venice%2C%20Italy&startDate=2025-09-15&endDate=2025-09-17&adults=2&rooms=1",
   },
   {
     date: new Date("9-16-2025"),
@@ -120,6 +137,8 @@ const activities = [
     date: new Date("9-17-2025"),
     location: ["Venice", "Berlin"],
     activities: ["Flight to Berlin"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Berlin%2C%20Germany&startDate=2025-09-17&endDate=2025-09-19&adults=2&rooms=1",
   },
   {
     date: new Date("9-18-2025"),
@@ -135,6 +154,8 @@ const activities = [
     date: new Date("9-19-2025"),
     location: ["Berlin", "Munich"],
     activities: ["Train to Munich"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Munich%2C%20Germany&startDate=2025-09-19&endDate=2025-09-21&adults=2&rooms=1",
   },
   {
     date: new Date("9-20-2025"),
@@ -145,11 +166,15 @@ const activities = [
     date: new Date("9-21-2025"),
     location: ["Munich", "St. Moritz"],
     activities: ["Train to St. Moritz", "Dinner in St. Moritz?"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=St.%20Moritz%2C%20Switzerland&startDate=2025-09-21&endDate=2025-09-22&adults=2&rooms=1",
   },
   {
     date: new Date("9-22-2025"),
     location: ["St. Moritz", "Zermatt"],
     activities: ["Glacier Express (~8 hrs)", "Dinner in Zermatt"],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Zermatt%2C%20Switzerland&startDate=2025-09-22&endDate=2025-09-23&adults=2&rooms=1",
   },
   {
     date: new Date("9-23-2025"),
@@ -159,6 +184,8 @@ const activities = [
       "Lunch in Geneva?",
       "High speed train to Paris",
     ],
+    hotelUrl:
+      "https://www.hotels.com/Hotel-Search?destination=Paris%2C%20France&startDate=2025-09-23&endDate=2025-09-27&adults=2&rooms=1",
   },
   {
     date: new Date("9-24-2025"),
@@ -179,6 +206,8 @@ const activities = [
     date: new Date("9-27-2025"),
     location: ["Paris", "Indianapolis"],
     activities: ["Flight back to Indianapolis"],
+    flightUrl:
+      "https://www.google.com/flights?hl=en#flt=IND.AMS.2025-08-29*PAR.IND.2025-09-27",
   },
 ];
 

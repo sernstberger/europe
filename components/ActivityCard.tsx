@@ -1,13 +1,15 @@
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRightIcon, HotelIcon, MapPinIcon } from "lucide-react";
+import { ArrowRightIcon, HotelIcon, MapPinIcon, PlaneIcon } from "lucide-react";
 import React from "react";
 interface Activity {
   date: Date;
   location: string[];
   activities?: string[];
   travelPlan?: string;
+  flightUrl?: string;
+  hotelUrl?: string;
 }
 
 export function ActivityCard({
@@ -48,7 +50,7 @@ export function ActivityCard({
           ))}
         </>
       )}
-      {activity.travelPlan ? (
+      {/* {activity.travelPlan ? (
         <p>{activity.travelPlan}</p>
       ) : (
         <a
@@ -67,6 +69,17 @@ export function ActivityCard({
         >
           <HotelIcon className="w-4 h-4 inline" />
           Find Hotel
+        </a>
+      )} */}
+
+      {activity.flightUrl && (
+        <a href={activity.flightUrl} target="_blank" rel="noopener noreferrer">
+          <PlaneIcon className="w-4 h-4 inline" />
+        </a>
+      )}
+      {activity.hotelUrl && (
+        <a href={activity.hotelUrl} target="_blank" rel="noopener noreferrer">
+          <HotelIcon className="w-4 h-4 inline" />
         </a>
       )}
     </div>
