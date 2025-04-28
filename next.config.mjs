@@ -8,10 +8,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-  },
-  output: "export",
-  basePath: "/europe",
-  assetPrefix: "/europe/",
+  }
 };
 
 export default nextConfig;
