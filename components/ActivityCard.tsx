@@ -1,15 +1,23 @@
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRightIcon, HotelIcon, MapPinIcon, PlaneIcon } from "lucide-react";
+import { ArrowRightIcon, HotelIcon, MapPinIcon, PlaneIcon, TrainIcon, TicketIcon } from "lucide-react";
 import React from "react";
+
 interface Activity {
   date: Date;
   location: string[];
-  activities?: string[];
-  travelPlan?: string;
+  activities: string[];
   flightUrl?: string;
   hotelUrl?: string;
+  trainUrl?: string;
+  activityUrls?: { name: string; url: string }[];
+  estimatedCosts: {
+    transport: number;
+    lodging: number;
+    activities: number;
+    food: number;
+  };
 }
 
 export function ActivityCard({
@@ -42,46 +50,46 @@ export function ActivityCard({
         ))}
       </div>
       {activity.activities && (
-        <>
+        <div className="space-y-1">
           {activity.activities.map((_activity) => (
             <Card key={_activity} className="border border-gray-300 p-1">
               <p className="text-sm">{_activity}</p>
             </Card>
           ))}
-        </>
+        </div>
       )}
-      {/* {activity.travelPlan ? (
-        <p>{activity.travelPlan}</p>
-      ) : (
-        <a
-          // href={`https://www.google.com/travel/hotels/${activity.location[0]}`}
-          href={`https://www.hotels.com/Hotel-Search?destination=${
-            activity.location[0]
-          }&flexibility=0_DAY&d1=${format(
-            activity.date,
-            "yyyy-MM-dd"
-          )}  &startDate=${format(activity.date, "yyyy-MM-dd")}&d2=${format(
-            activity.date,
-            "yyyy-MM-dd"
-          )}&endDate=${format(activity.date, "yyyy-MM-dd")}&adults=2&rooms`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <HotelIcon className="w-4 h-4 inline" />
-          Find Hotel
-        </a>
-      )} */}
-
-      {activity.flightUrl && (
-        <a href={activity.flightUrl} target="_blank" rel="noopener noreferrer">
-          <PlaneIcon className="w-4 h-4 inline" />
-        </a>
-      )}
-      {activity.hotelUrl && (
-        <a href={activity.hotelUrl} target="_blank" rel="noopener noreferrer">
-          <HotelIcon className="w-4 h-4 inline" />
-        </a>
-      )}
+      <div className="mt-2 space-y-1">
+        {activity.flightUrl && (
+          <a href={activity.flightUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
+            <PlaneIcon className="w-4 h-4 mr-1" />
+            Book Flight
+          </a>
+        )}
+        {activity.hotelUrl && (
+          <a href={activity.hotelUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
+            <HotelIcon className="w-4 h-4 mr-1" />
+            Book Hotel
+          </a>
+        )}
+        {activity.trainUrl && (
+          <a href={activity.trainUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
+            <TrainIcon className="w-4 h-4 mr-1" />
+            Book Train
+          </a>
+        )}
+        {activity.activityUrls?.map(({ name, url }) => (
+          <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
+            <TicketIcon className="w-4 h-4 mr-1" />
+            {name}
+          </a>
+        ))}
+      </div>
+      <div className="mt-2 text-sm">
+        <p>Transport: ${activity.estimatedCosts.transport}</p>
+        <p>Lodging: ${activity.estimatedCosts.lodging}</p>
+        <p>Activities: ${activity.estimatedCosts.activities}</p>
+        <p>Food: ${activity.estimatedCosts.food}</p>
+      </div>
     </div>
   );
 }
