@@ -7,15 +7,16 @@ import React from "react";
 interface Activity {
   date: Date;
   location: string[];
-  activities: string[];
-  flightUrl?: string;
+  activities: {
+    name: string;
+    url?: string;
+    cost: number;
+  }[];
   hotelUrl?: string;
   trainUrl?: string;
-  activityUrls?: { name: string; url: string }[];
-  estimatedCosts: {
-    transport: number;
-    lodging: number;
-    activities: number;
+  dailyCosts: {
+    transport?: number;
+    lodging?: number;
     food: number;
   };
 }
@@ -52,19 +53,22 @@ export function ActivityCard({
       {activity.activities && (
         <div className="space-y-1">
           {activity.activities.map((_activity) => (
-            <Card key={_activity} className="border border-gray-300 p-1">
-              <p className="text-sm">{_activity}</p>
+            <Card key={_activity.name} className="border border-gray-300 p-1">
+              <p className="text-sm">{_activity.name}</p>
+              {_activity.url && (
+                <a href={_activity.url} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
+                  <TicketIcon className="w-4 h-4 mr-1" />
+                  Book Tickets
+                </a>
+              )}
+              {_activity.cost > 0 && (
+                <p className="text-sm text-gray-600">${_activity.cost}</p>
+              )}
             </Card>
           ))}
         </div>
       )}
       <div className="mt-2 space-y-1">
-        {activity.flightUrl && (
-          <a href={activity.flightUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
-            <PlaneIcon className="w-4 h-4 mr-1" />
-            Book Flight
-          </a>
-        )}
         {activity.hotelUrl && (
           <a href={activity.hotelUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
             <HotelIcon className="w-4 h-4 mr-1" />
@@ -77,18 +81,15 @@ export function ActivityCard({
             Book Train
           </a>
         )}
-        {activity.activityUrls?.map(({ name, url }) => (
-          <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
-            <TicketIcon className="w-4 h-4 mr-1" />
-            {name}
-          </a>
-        ))}
       </div>
       <div className="mt-2 text-sm">
-        <p>Transport: ${activity.estimatedCosts.transport}</p>
-        <p>Lodging: ${activity.estimatedCosts.lodging}</p>
-        <p>Activities: ${activity.estimatedCosts.activities}</p>
-        <p>Food: ${activity.estimatedCosts.food}</p>
+        {activity.dailyCosts.transport && (
+          <p>Transport: ${activity.dailyCosts.transport}</p>
+        )}
+        {activity.dailyCosts.lodging && (
+          <p>Lodging: ${activity.dailyCosts.lodging}</p>
+        )}
+        <p>Food: ${activity.dailyCosts.food}</p>
       </div>
     </div>
   );
